@@ -1,5 +1,7 @@
 <?php
 
+define('UPLOADS_DIR', realpath(__DIR__ . '/../uploads'));
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application

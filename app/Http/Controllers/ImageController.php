@@ -2,37 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Image;
 use App\Recipe;
 use Illuminate\Http\Request;
 
+/**
+ * Class ImageController
+ * @package App\Http\Controllers
+ */
 class ImageController extends Controller
 {
+
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * @param Request $request
      */
-    public function __construct()
+    public function uploadImage(Request $request)
     {
-        //
+        $imageFile = $request->file('image');
+        if (!$imageFile) {
+            return response()->json(['image' => 'The image field is required.'],400);
+        }
+
+        $ext = pathinfo($imageFile->getClientOriginalName(), PATHINFO_EXTENSION);
+        $filename = uniqid() . '_' . time() . '.' . $ext;
+        $request->file('image')->move(UPLOADS_DIR, $filename);
+
+        $image = Image::create(['url' => $filename]);
+
+        return response()->json($image, 200);
     }
 
-    public function getRecipes()
-    {
-        $recipes = Recipe::with(['author', 'image'])->get()->all();
-        return response()->json($recipes);
-    }
-
-    public function getRecipe($id)
-    {
-        $recipe = Recipe::with(['author', 'image'])->get()->find($id);
-        return response()->json($recipe);
-    }
-
-    public function createRecipe(Request $request)
-    {
-        $recipe = Author::create($request->all());
-
-        return response()->json($recipe, 201);
-    }
 }

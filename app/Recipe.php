@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -13,7 +14,7 @@ class Recipe extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'body'
+        'title', 'body', 'author_id', 'image_id'
     ];
 
     /**
