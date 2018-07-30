@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('UTC');
+
 define('UPLOADS_DIR', realpath(__DIR__ . '/../uploads'));
 
 /*
