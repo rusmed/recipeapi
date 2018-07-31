@@ -99,7 +99,7 @@
         401 - unauthorized
         403 - forbidden
         
-###Setup
+### Setup
 
     - Install PostgreSQL
     - Execute /database/dump/dump.sql
