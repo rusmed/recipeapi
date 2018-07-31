@@ -1,3 +1,5 @@
+BEGIN;
+
 create table images
 (
 	id bigserial not null
@@ -39,3 +41,5 @@ create table recipes
 			references images
 )
 ;
+
+COMMIT;

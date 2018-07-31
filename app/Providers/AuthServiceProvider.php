@@ -30,10 +30,7 @@ class AuthServiceProvider extends ServiceProvider
                     return null;
                 }
 
-                $lifetime = env('TOKEN_LIFETIME');
-                $expired = time() - $lifetime;
-
-                return $expired > strtotime($user->token_expired) ? null : $user;
+                return time() > strtotime($user->token_expired) ? null : $user;
             }
 
             return null;

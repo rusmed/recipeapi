@@ -20,10 +20,12 @@ class AuthController extends Controller
 
         if (Hash::check($request->input('password'), $user->password)) {
 
+            $lifetime = env('TOKEN_LIFETIME');
+            $expired = time() + $lifetime;
             $token = base64_encode(str_random(40));
-            User::where('email', $request->input('email'))->update(['token' => "$token", 'token_expired' => 'NOW()']);
+            User::where('email', $request->input('email'))->update(['token' => $token, 'token_expired' => date('Y-m-d H:i:s', $expired)]);
 
-            return response()->json(['status' => 'success', 'token' => $token, 'message' => 'NOTE: The lifetime of the token is 10 minutes from the last request']);
+            return response()->json(['status' => 'success', 'token' => $token, 'token_expired' => $expired]);
 
         }
 
