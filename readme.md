@@ -98,3 +98,10 @@
         400 - object does not exist
         401 - unauthorized
         403 - forbidden
+        
+###Setup
+
+    - Install PostgreSQL
+    - Execute /database/dump/dump.sql
+    - Copy file .env.example and rename to .env
+    - Write Access to folder /uploads 
