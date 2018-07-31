@@ -2,7 +2,7 @@
 
 ### Authentication
 
-    User should signup and signin with credentionals (email, password). User will recieve token for next API calls.
+    User should signup and signin with credentials (email, password). User will recieve a token for next API calls.
     
     Likewise, you can use the 401 - Unauthorized status code to indicate that a user could not authenticate.
     
