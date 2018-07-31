@@ -18,7 +18,7 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->input('email'))->first();
 
-        if (Hash::check($request->input('password'), $user->password)) {
+        if (is_object($user) && Hash::check($request->input('password'), $user->password)) {
 
             $lifetime = env('TOKEN_LIFETIME');
             $expired = time() + $lifetime;
