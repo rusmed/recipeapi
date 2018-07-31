@@ -29,7 +29,7 @@ class ImageController extends Controller
 
         $image = Image::create(['url' => $filename]);
 
-        return response()->json($image, 200);
+        return response()->json($image, 201);
     }
 
 }
