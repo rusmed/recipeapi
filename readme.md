@@ -104,4 +104,4 @@
     - Install PostgreSQL
     - Execute /database/dump/dump.sql
     - Copy file .env.example and rename to .env
-    - Write Access to folder /uploads 
+    - Grant write permissions for /uploads path 
