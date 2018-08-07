@@ -14,10 +14,6 @@ class CreateRecipesTable extends Migration
     public function up()
     {
         Schema::create('recipes', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->charset = 'utf8';
-            $table->collation = 'utf8_general_ci';
-
             $table->increments('id');
             $table->string('title')->nullable(false);
             $table->string('body')->nullable(false);
