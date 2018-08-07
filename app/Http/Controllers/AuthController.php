@@ -12,8 +12,8 @@ class AuthController extends Controller
     public function signin(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required|string',
+            'password' => 'required|string'
         ]);
 
         $user = User::where('email', $request->input('email'))->first();
@@ -36,9 +36,9 @@ class AuthController extends Controller
     public function signup(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required'
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string'
         ]);
 
         $data = [

@@ -9,32 +9,44 @@ use Illuminate\Http\Request;
 class RecipeController extends Controller
 {
 
+    /**
+     * Get list all recipes
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getRecipes()
     {
-        $recipes = Recipe::with(['author', 'image'])->get()->all();
+        $recipes = Recipe::with(['author', 'image'])->get();
         return response()->json($recipes);
     }
 
     /**
+     * Get recipe by id
      * @param integer $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function getRecipe($id)
     {
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if (!$id) {
+            return response()->json(['message' => 'Must be provided ID'], 400);
+        }
+
         $recipe = Recipe::with(['author', 'image'])->get()->find($id);
         return response()->json($recipe);
     }
 
     /**
+     * Create a new recipe
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function createRecipe(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'body' => 'required',
-            'image_id' => 'required'
+            'title' => 'required|string',
+            'body' => 'required|string',
+            'image_id' => 'required|integer'
         ]);
 
         $image = Image::find($request->input('image_id'));
@@ -58,16 +70,23 @@ class RecipeController extends Controller
     }
 
     /**
+     * Update recipe
      * @param Request $request
      * @param integer $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function updateRecipe(Request $request, $id)
     {
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if (!$id) {
+            return response()->json(['message' => 'Must be provided ID'], 400);
+        }
+
         $this->validate($request, [
-            'title' => 'required',
-            'body' => 'required',
-            'image_id' => 'required'
+            'title' => 'required|string',
+            'body' => 'required|string',
+            'image_id' => 'required|integer'
         ]);
 
         $recipe = Recipe::find($id);
@@ -100,12 +119,19 @@ class RecipeController extends Controller
     }
 
     /**
+     * Delete recipe
      * @param Request $request
      * @param integer $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function deleteRecipe(Request $request, $id)
     {
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if (!$id) {
+            return response()->json(['message' => 'Must be provided ID'], 400);
+        }
+
         $recipe = Recipe::find($id);
         if (!is_object($recipe)) {
             return response()->json(['message' => 'Recipe not found'], 400);

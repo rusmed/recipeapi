@@ -14,6 +14,7 @@ class ImageController extends Controller
 {
 
     /**
+     * Upload image and move to directory UPLOADS_DIR
      * @param Request $request
      */
     public function uploadImage(Request $request)
