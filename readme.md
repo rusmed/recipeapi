@@ -1,3 +1,13 @@
+В этой версии API используются миграции. Фреймворк Lumen. Для работы с БД используется встроенный Eloquent. 
+
+Во второй версии API (https://github.com/rusmed/recipeapipdo) для работы с БД использовал PDO. Для запуска проекта docker.
+
+Для запуска миграций используйте команду **"php artisan migrate"**
+
+После авторизации необходимо сохранить token и передавать в последующих запросах в заголовке **api_token**.
+
+Примеры CURL есть в описании ко второй версии АПИ.
+
 # This manual describes the API commands for recipes
 
 ### Authentication
@@ -102,6 +112,6 @@
 ### Setup
 
     - Install PostgreSQL
-    - Execute /database/dump/dump.sql
+    - Execute migrations (php artisan migrate)
     - Copy file .env.example and rename to .env
     - Grant write permissions for /uploads path 
