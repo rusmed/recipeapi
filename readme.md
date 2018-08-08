@@ -6,7 +6,7 @@
 
 После авторизации необходимо сохранить token и передавать в последующих запросах в заголовке **api_token**.
 
-Примеры CURL есть в описании ко второй версии АПИ.
+Примеры CURL есть в описании ко второй версии АПИ (https://github.com/rusmed/recipeapipdo).
 
 # This manual describes the API commands for recipes
 
@@ -84,7 +84,7 @@
         400 - validation failed
         401 - unauthorized
         
-**Update a recipe**
+**Update recipe**
 
     PUT /api/recipes/{id}
     
@@ -99,7 +99,7 @@
         401 - unauthorized
         403 - forbidden
         
-**Delete a recipe**
+**Delete recipe**
 
     DELETE /api/recipes/{id}
     
