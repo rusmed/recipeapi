@@ -109,6 +109,21 @@
         401 - unauthorized
         403 - forbidden
         
+**Get one recipe**
+
+    GET /api/recipes/{id}
+      
+    responses:
+        200 - ok
+        404 - recipe not found
+            
+**Get all recipes**
+
+    GET /api/recipes
+      
+    responses:
+        200 - ok
+        
 ### Setup
 
     - Install PostgreSQL
