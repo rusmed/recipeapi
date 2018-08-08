@@ -1,6 +1,6 @@
 /vendor
 /.idea
-/uploads
+/uploads/**
 !/uploads/.gitkeep
 Homestead.json
 Homestead.yaml
